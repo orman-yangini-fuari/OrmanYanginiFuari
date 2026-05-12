@@ -1,0 +1,124 @@
+<!-- grafik.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yangın Grafikleri</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    font-family:Arial;
+    margin:0;
+    background:#f4f4f4;
+}
+
+header{
+    background:#d32f2f;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+nav{
+    background:#b71c1c;
+    padding:12px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:10px;
+    font-weight:bold;
+    background:#e53935;
+    padding:10px 15px;
+    border-radius:8px;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:auto;
+    margin-top:30px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    background:#333;
+    color:white;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📈 Türkiye Orman Yangın Grafikleri</h1>
+</header>
+
+<nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="grafik.html">Yangın Grafikleri</a>
+</nav>
+
+<div class="container">
+    <h2>📊 Yıllara Göre Yangın Sayısı</h2>
+    <canvas id="yanginGrafik"></canvas>
+</div>
+
+<div class="container">
+    <h2>🔥 Yangın Nedenleri</h2>
+    <canvas id="nedenGrafik"></canvas>
+</div>
+
+<div class="footer">
+    <p>© 2026 Orman Yangınları Bilgilendirme</p>
+</div>
+
+<script>
+const ctx = document.getElementById('yanginGrafik');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+            label: 'Yangın Sayısı',
+            data: [2100, 2500, 3100, 3700, 4200],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive:true,
+        scales: {
+            y: {
+                beginAtZero:true
+            }
+        }
+    }
+});
+
+const ctx2 = document.getElementById('nedenGrafik');
+
+new Chart(ctx2, {
+    type: 'pie',
+    data: {
+        labels: ['Sigara', 'Piknik Ateşi', 'Cam Şişe', 'Diğer'],
+        datasets: [{
+            data: [35, 30, 15, 20]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
